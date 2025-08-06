@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-material-template": {
+    "app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -26,9 +26,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -69,10 +67,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-material-template:build:production"
+              "buildTarget": "app:build:production"
             },
             "development": {
-              "buildTarget": "angular-material-template:build:development"
+              "buildTarget": "app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,9 +89,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           }
         }
       }

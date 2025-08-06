@@ -1,13 +1,13 @@
 {
-  "name": "angular-material-template",
-  "version": "0.0.0",
+  "name": "app",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular-material-template": "node dist/angular-material-template/server/server.mjs"
+    "serve:ssr": "node dist/app/server/server.mjs"
   },
   "prettier": {
     "overrides": [
@@ -21,6 +21,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^20.1.4",
     "@angular/cdk": "^20.1.4",
     "@angular/common": "^20.1.0",
     "@angular/compiler": "^20.1.0",
