@@ -1,12 +1,28 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
+import { TitleService } from './services/title.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'main[app-root]',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('angular-material-template');
+  constructor(
+    private titleService: TitleService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
+
+  ngOnInit() {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.titleService.setCanonicalURL(event.urlAfterRedirects);
+        this.dialog.closeAll();
+      });
+  }
 }
